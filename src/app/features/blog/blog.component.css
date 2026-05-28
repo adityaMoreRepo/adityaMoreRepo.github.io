@@ -1,0 +1,200 @@
+/* ============================================================
+   BLOG COMPONENT — Glassmorphism Dark Theme
+   ============================================================ */
+
+/* ─── Section ─────────────────────────────────────────────── */
+.blog-section {
+  background: transparent;
+}
+
+/* ─── Blog Grid ───────────────────────────────────────────── */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3.5rem;
+}
+
+/* ─── Blog Card ───────────────────────────────────────────── */
+.blog-card {
+  position: relative;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    border-color var(--transition-base),
+    background var(--transition-base);
+}
+
+/* Subtle shimmer overlay indicating placeholder state */
+.blog-placeholder-overlay {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -55deg,
+    transparent,
+    transparent 20px,
+    rgba(255, 255, 255, 0.012) 20px,
+    rgba(255, 255, 255, 0.012) 40px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Card Body ───────────────────────────────────────────── */
+.blog-card-body {
+  position: relative;
+  z-index: 1;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+}
+
+/* ─── Meta Row ────────────────────────────────────────────── */
+.blog-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* ─── Category Badge ──────────────────────────────────────── */
+.blog-category-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  background: rgba(124, 58, 237, 0.14);
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  color: var(--accent-purple-light);
+  white-space: nowrap;
+}
+
+/* ─── Coming Soon Tag ─────────────────────────────────────── */
+.coming-soon-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--accent-cyan-light);
+  background: rgba(6, 182, 212, 0.1);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  border-radius: 50px;
+  padding: 0.22rem 0.65rem;
+  white-space: nowrap;
+  animation: pulse-badge 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse-badge {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.65; }
+}
+
+/* ─── Card Title ──────────────────────────────────────────── */
+.blog-card-title {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+/* ─── Excerpt ─────────────────────────────────────────────── */
+.blog-card-excerpt {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  flex: 1;
+}
+
+/* ─── Card Footer ─────────────────────────────────────────── */
+.blog-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--glass-border);
+}
+
+.blog-read-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+.blog-draft-label {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+/* ─── CTA Section ─────────────────────────────────────────── */
+.blog-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.blog-cta-text {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 480px;
+  line-height: 1.7;
+}
+
+.linkedin-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, #0077b5, #00a0dc);
+  color: #fff;
+  padding: 0.8rem 1.8rem;
+  font-size: 0.95rem;
+  border-radius: var(--border-radius-sm);
+  box-shadow: 0 4px 20px rgba(0, 119, 181, 0.35);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.linkedin-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 119, 181, 0.55);
+  color: #fff;
+}
+
+/* ─── Responsive ──────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-card-body {
+    padding: 1.25rem;
+  }
+}

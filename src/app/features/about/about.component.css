@@ -1,0 +1,337 @@
+/* =========================================================
+   ABOUT COMPONENT — Glassmorphism Dark Theme
+   ========================================================= */
+
+:host {
+  display: block;
+}
+
+.about-section {
+  position: relative;
+  z-index: var(--z-base);
+  background: linear-gradient(
+    180deg,
+    var(--color-bg-primary) 0%,
+    var(--color-bg-secondary) 50%,
+    var(--color-bg-primary) 100%
+  );
+}
+
+/* ─── Section Header ────────────────────────────────────── */
+.section-header {
+  text-align: center;
+  margin-bottom: 4.5rem;
+}
+
+/* ─── Two-column grid ───────────────────────────────────── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+/* ─── Left column — Image card ──────────────────────────── */
+.about-image-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: sticky;
+  top: 100px;
+}
+
+.image-card {
+  position: relative;
+  padding: 1.75rem;
+  border-radius: var(--border-radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  transition: box-shadow var(--transition-slow);
+}
+
+.image-card:hover {
+  box-shadow:
+    var(--shadow-lg),
+    0 0 60px rgba(124, 58, 237, 0.35),
+    0 0 120px rgba(6, 182, 212, 0.15);
+}
+
+/* Gradient border glow via pseudo-element */
+.image-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: var(--gradient-primary);
+  z-index: -1;
+  opacity: 0.4;
+  transition: opacity var(--transition-slow);
+}
+
+.image-card:hover::before {
+  opacity: 0.7;
+}
+
+/* Corner accent decorations */
+.corner-accent {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-color: var(--accent-cyan);
+  border-style: solid;
+  border-width: 0;
+  opacity: 0.6;
+}
+
+.corner-accent--tl {
+  top: 12px;
+  left: 12px;
+  border-top-width: 2px;
+  border-left-width: 2px;
+  border-top-left-radius: 6px;
+}
+
+.corner-accent--br {
+  bottom: 12px;
+  right: 12px;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+  border-bottom-right-radius: 6px;
+  border-color: var(--accent-purple-light);
+}
+
+/* Gradient ring */
+.image-ring {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  padding: 3px;
+  background: var(--gradient-primary);
+  box-shadow:
+    0 0 0 1px rgba(124, 58, 237, 0.2),
+    0 0 50px rgba(124, 58, 237, 0.3),
+    0 0 100px rgba(6, 182, 212, 0.1);
+  animation: aboutRingGlow 5s ease-in-out infinite alternate;
+}
+
+@keyframes aboutRingGlow {
+  from {
+    box-shadow:
+      0 0 0 1px rgba(124, 58, 237, 0.2),
+      0 0 40px rgba(124, 58, 237, 0.25),
+      0 0 80px rgba(6, 182, 212, 0.08);
+  }
+  to {
+    box-shadow:
+      0 0 0 3px rgba(124, 58, 237, 0.4),
+      0 0 70px rgba(124, 58, 237, 0.45),
+      0 0 130px rgba(6, 182, 212, 0.2);
+  }
+}
+
+.about-profile-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  border: 3px solid var(--color-bg-primary);
+}
+
+/* ─── Currently at badge ────────────────────────────────── */
+.currently-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--border-radius-md);
+  border-color: rgba(34, 197, 94, 0.2) !important;
+}
+
+.currently-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.7);
+  flex-shrink: 0;
+  animation: currentlyPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes currentlyPulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 10px rgba(34, 197, 94, 0.7); }
+  50%       { opacity: 0.7; box-shadow: 0 0 20px rgba(34, 197, 94, 0.4); }
+}
+
+.currently-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.currently-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.currently-value {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Right column — Content ────────────────────────────── */
+.about-content-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding-top: 0.5rem;
+}
+
+/* ─── Bio paragraphs ────────────────────────────────────── */
+.about-bio {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.about-bio p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.9;
+}
+
+.about-bio strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* ─── Stats 2×2 grid ────────────────────────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border-radius: var(--border-radius-md);
+  gap: 0.35rem;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle inner gradient on hover */
+.stat-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-card);
+  opacity: 0;
+  border-radius: inherit;
+  transition: opacity var(--transition-base);
+}
+
+.stat-card:hover::after {
+  opacity: 1;
+}
+
+.stat-card__value {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 800;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+  position: relative;
+  z-index: 1;
+}
+
+.stat-card__label {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Responsive ────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .about-grid {
+    grid-template-columns: 300px 1fr;
+    gap: 3.5rem;
+  }
+
+  .image-ring {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .about-image-col {
+    position: static;
+    align-items: center;
+  }
+
+  .image-ring {
+    width: 200px;
+    height: 200px;
+  }
+
+  .image-card {
+    max-width: 320px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .currently-badge {
+    max-width: 320px;
+    width: 100%;
+  }
+
+  .about-bio p {
+    font-size: 1rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .stat-card {
+    padding: 1.25rem 0.75rem;
+  }
+}

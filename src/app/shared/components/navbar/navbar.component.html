@@ -1,0 +1,103 @@
+<nav class="navbar" [class.scrolled]="isScrolled()" [class.menu-open]="isMobileMenuOpen()">
+  <div class="nav-container">
+
+    <!-- ── Logo ─────────────────────────────────────────── -->
+    <a class="nav-logo" href="#hero" (click)="scrollTo('hero')">
+      <span class="logo-monogram gradient-text">AM</span>
+      <span class="logo-name">Aditya More</span>
+    </a>
+
+    <!-- ── Desktop Links ─────────────────────────────────── -->
+    <ul class="nav-links" role="navigation" aria-label="Primary navigation">
+      @for (link of navLinks; track link.fragment) {
+        <li>
+          <a
+            class="nav-link"
+            [class.active]="isActive(link.fragment)"
+            href="#{{ link.fragment }}"
+            (click)="scrollTo(link.fragment); $event.preventDefault()"
+          >
+            {{ link.label }}
+            <span class="nav-link-underline"></span>
+          </a>
+        </li>
+      }
+    </ul>
+
+    <!-- ── Download Resume ──────────────────────────────── -->
+    <a
+      class="btn-resume"
+      [href]="resumeUrl"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Download Resume"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="7 10 12 15 17 10"/>
+        <line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+      Resume
+    </a>
+
+    <!-- ── Hamburger ─────────────────────────────────────── -->
+    <button
+      class="hamburger"
+      [class.open]="isMobileMenuOpen()"
+      (click)="toggleMobileMenu()"
+      aria-label="Toggle navigation menu"
+      [attr.aria-expanded]="isMobileMenuOpen()"
+    >
+      <span class="bar bar-1"></span>
+      <span class="bar bar-2"></span>
+      <span class="bar bar-3"></span>
+    </button>
+
+  </div><!-- /nav-container -->
+
+  <!-- ── Mobile Drawer ─────────────────────────────────── -->
+  <div
+    class="mobile-drawer"
+    [class.open]="isMobileMenuOpen()"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Mobile navigation"
+  >
+    <ul class="mobile-nav-links">
+      @for (link of navLinks; track link.fragment) {
+        <li>
+          <a
+            class="mobile-nav-link"
+            [class.active]="isActive(link.fragment)"
+            href="#{{ link.fragment }}"
+            (click)="scrollTo(link.fragment); $event.preventDefault()"
+          >
+            {{ link.label }}
+          </a>
+        </li>
+      }
+    </ul>
+
+    <a
+      class="btn-resume btn-resume--mobile"
+      [href]="resumeUrl"
+      target="_blank"
+      rel="noopener noreferrer"
+      (click)="closeMobileMenu()"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="7 10 12 15 17 10"/>
+        <line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+      Download Resume
+    </a>
+  </div>
+
+  <!-- ── Overlay ────────────────────────────────────────── -->
+  @if (isMobileMenuOpen()) {
+    <div class="mobile-overlay" (click)="closeMobileMenu()" aria-hidden="true"></div>
+  }
+</nav>

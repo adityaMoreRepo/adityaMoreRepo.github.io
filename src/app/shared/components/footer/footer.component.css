@@ -1,0 +1,186 @@
+/* ============================================================
+   FOOTER COMPONENT — Glassmorphism Dark Theme
+   ============================================================ */
+
+/* ── Base ──────────────────────────────────────────────────── */
+.footer {
+  position: relative;
+  z-index: var(--z-base);
+  background: var(--color-bg-secondary);
+  padding-bottom: 0.5rem;
+}
+
+/* ── Divider glow line ─────────────────────────────────────── */
+.footer-divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--accent-purple) 30%,
+    var(--accent-cyan) 70%,
+    transparent 100%
+  );
+  opacity: 0.4;
+}
+
+/* ── Inner layout ─────────────────────────────────────────── */
+.footer-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+/* ── Tagline ──────────────────────────────────────────────── */
+.footer-tagline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+  justify-content: center;
+  line-height: 1.4;
+}
+
+.footer-angular {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: #dd0031;
+  font-weight: 600;
+}
+
+.footer-angular svg {
+  flex-shrink: 0;
+}
+
+.footer-heart {
+  font-size: 1rem;
+  animation: heartbeat 1.8s ease-in-out infinite;
+  display: inline-block;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15%       { transform: scale(1.25); }
+  30%       { transform: scale(1); }
+  45%       { transform: scale(1.15); }
+  60%       { transform: scale(1); }
+}
+
+/* ── Social Icons ─────────────────────────────────────────── */
+.footer-socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.social-icon-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-sm);
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition:
+    color          var(--transition-base),
+    background     var(--transition-base),
+    border-color   var(--transition-base),
+    box-shadow     var(--transition-base),
+    transform      var(--transition-base);
+  overflow: hidden;
+}
+
+/* Shine sweep on hover */
+.social-icon-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.social-icon-btn:hover::before {
+  transform: translateX(100%);
+}
+
+/* ── Per-icon glow colours ─────────────────────────────────── */
+.social-icon-btn:hover {
+  transform: translateY(-3px);
+  background: var(--glass-bg-hover);
+}
+
+/* GitHub — purple glow */
+.social-icon-btn:nth-child(1):hover {
+  color: var(--accent-purple-light);
+  border-color: rgba(124, 58, 237, 0.45);
+  box-shadow:
+    0 6px 24px rgba(124, 58, 237, 0.35),
+    0 0 0 1px rgba(124, 58, 237, 0.2);
+}
+
+/* LinkedIn — cyan glow */
+.social-icon-btn:nth-child(2):hover {
+  color: var(--accent-cyan-light);
+  border-color: rgba(6, 182, 212, 0.45);
+  box-shadow:
+    0 6px 24px rgba(6, 182, 212, 0.35),
+    0 0 0 1px rgba(6, 182, 212, 0.2);
+}
+
+/* Email — warm gradient glow */
+.social-icon-btn:nth-child(3):hover {
+  color: #fbbf24;
+  border-color: rgba(251, 191, 36, 0.4);
+  box-shadow:
+    0 6px 24px rgba(251, 191, 36, 0.25),
+    0 0 0 1px rgba(251, 191, 36, 0.15);
+}
+
+.social-icon-label {
+  font-family: var(--font-sans);
+}
+
+/* ── Copyright ────────────────────────────────────────────── */
+.footer-copy {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.01em;
+}
+
+.footer-name {
+  font-weight: 600;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .footer-inner {
+    padding: 2rem 1rem;
+    gap: 1.25rem;
+  }
+
+  .social-icon-btn {
+    padding: 0.55rem 0.8rem;
+    font-size: 0.75rem;
+  }
+}

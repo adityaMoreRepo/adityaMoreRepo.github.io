@@ -1,0 +1,336 @@
+/* ============================================================
+   EXPERIENCE — Timeline Layout
+   ============================================================ */
+
+.experience-section {
+  background: transparent;
+}
+
+/* ─── Timeline Container ───────────────────────────────── */
+.timeline {
+  position: relative;
+  padding: 0 0 2rem;
+}
+
+/* Vertical gradient line */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--accent-purple) 15%,
+    var(--accent-cyan) 85%,
+    transparent 100%
+  );
+  opacity: 0.5;
+  z-index: 0;
+}
+
+/* ─── Dot on the Line ───────────────────────────────────── */
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent-purple);
+  border: 2px solid var(--color-bg-primary);
+  box-shadow: 0 0 12px var(--accent-glow-purple);
+  z-index: 2;
+  transition: background var(--transition-base), box-shadow var(--transition-base);
+}
+
+.timeline-dot.current-dot {
+  background: #22c55e;
+  box-shadow: 0 0 16px rgba(34, 197, 94, 0.6);
+  border-color: var(--color-bg-primary);
+}
+
+/* ─── Entry Base ────────────────────────────────────────── */
+.timeline-entry {
+  position: relative;
+  width: calc(50% - 48px);
+  margin-bottom: 3rem;
+  z-index: 1;
+}
+
+/* Left entries (even index) */
+.entry-left {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Right entries (odd index) */
+.entry-right {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* ─── Connector Arrow ──────────────────────────────────── */
+.card-arrow {
+  position: absolute;
+  top: 36px;
+  width: 0;
+  height: 0;
+}
+
+.entry-left .card-arrow {
+  right: -10px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid rgba(255, 255, 255, 0.06);
+}
+
+.entry-right .card-arrow {
+  left: -10px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ─── Glass Card ────────────────────────────────────────── */
+.timeline-card {
+  padding: 1.75rem;
+  border-radius: var(--border-radius-md);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-card);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.timeline-card:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--shadow-md), 0 0 30px rgba(124, 58, 237, 0.15);
+  transform: translateY(-3px);
+}
+
+.timeline-card:hover::before {
+  opacity: 1;
+}
+
+/* ─── Card Header ───────────────────────────────────────── */
+.card-header {
+  margin-bottom: 1.25rem;
+}
+
+.company-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.company-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  line-height: 1.3;
+}
+
+.client-separator {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.client-name {
+  color: var(--accent-cyan-light);
+  font-weight: 600;
+}
+
+.role-title {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--accent-purple-light);
+  margin-bottom: 0.6rem;
+}
+
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.meta-item svg {
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+/* ─── Current Badge ─────────────────────────────────────── */
+.current-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.2rem 0.65rem;
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 50px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #4ade80;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Pulsing green dot */
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  display: inline-block;
+  flex-shrink: 0;
+  animation: pulse-glow 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(34, 197, 94, 0);
+    transform: scale(1.1);
+  }
+}
+
+/* ─── Tech Tags ─────────────────────────────────────────── */
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+/* ─── Bullet Points ─────────────────────────────────────── */
+.bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.bullet-item {
+  position: relative;
+  padding-left: 1.25rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.bullet-item::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent-cyan);
+  font-size: 0.7rem;
+  line-height: 1.9;
+}
+
+/* ─── Reveal Animation ───────────────────────────────────── */
+.timeline-entry.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.entry-left.reveal {
+  transform: translateX(-24px) translateY(16px);
+}
+
+.entry-right.reveal {
+  transform: translateX(24px) translateY(16px);
+}
+
+.timeline-entry.reveal.visible {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+}
+
+/* ─── Mobile — Single Column ────────────────────────────── */
+@media (max-width: 900px) {
+  .timeline-line {
+    left: 20px;
+    transform: none;
+  }
+
+  .timeline-dot {
+    left: 20px;
+    transform: translateX(-50%);
+  }
+
+  .timeline-entry {
+    width: calc(100% - 52px);
+    margin-left: 52px !important;
+    margin-right: 0 !important;
+  }
+
+  .entry-left .card-arrow,
+  .entry-right .card-arrow {
+    left: -10px;
+    right: auto;
+    border-left: none;
+    border-right: 10px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .entry-left.reveal {
+    transform: translateX(16px) translateY(16px);
+  }
+
+  .entry-right.reveal {
+    transform: translateX(16px) translateY(16px);
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-card {
+    padding: 1.25rem;
+  }
+
+  .company-name {
+    font-size: 0.95rem;
+  }
+
+  .meta-row {
+    gap: 0.6rem;
+  }
+}
