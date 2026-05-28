@@ -57,7 +57,7 @@ export const PERSONAL = {
   phone: '+91 9028895041',
   location: 'Pune, India',
   profileImage: 'assets/images/profile.jpg',
-  resumeUrl: 'assets/resume/Aditya_More_Resume.pdf', // add your PDF here
+  resumeUrl: 'public/assets/resume/Resume 1.1.pdf', // add your PDF here
 };
 
 // ─── SOCIAL LINKS ────────────────────────────────────────────
